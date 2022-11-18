@@ -7,6 +7,7 @@ var los_pollos_hermanos = 0;
 var los_pollos_hermanos_price = 500;
 
 // Elements
+const alertLabel = document.getElementById("alert");
 const moneyLabel = document.getElementById("moneyLabel");
 const businessLabel = document.getElementById("businessLabel");
 const clicker = document.getElementById("clicker");
@@ -36,11 +37,18 @@ function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
 }
 
+async function saulAlert(alert) {
+    alertLabel.style.opacity = 1
+    alertLabel.innerHTML = alert;
+    await delay(5000)
+    alertLabel.style.opacity = 0
+}
+
 function purchase(item) {
     if (item === "los-pollos-hermanos" && money >= los_pollos_hermanos_price) {
         addBusiness("los_pollos_hermanos", los_pollos_hermanos_price, 10)
     } else {
-        alert("jit is kinda poor lol")
+        saulAlert("your POOR")
     }
 }
 
